@@ -16,11 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from apps.core.views import frontpage, contactpage
-
+from apps.core.views import frontpage, contactpage, aboutpage
+from apps.store.views import product_detail, category_detail
+from apps.cart.views import cart
 
 urlpatterns = [
-    path('', frontpage , name='frontpage'),
-    path('contact/', contactpage , name='contactpage'), #name값은 장고 템플릿 url태그에서 사용하는 값 
     path('admin/', admin.site.urls),
+    path('cart/', cart, name="cart")
+    path('', frontpage , name='frontpage'),
+    path('contact/', contactpage , name='contactpage'), #name값은 장고 템플릿 url태그에서 사용하는 값
+    path('about/', aboutpage , name='aboutpage'),
+    path('<slug:category_slug>/<slug:slug>/', product_detail, name='product_detail'),
+    path('<slug:slug>/', category_detail, name='category_detail'),   
 ]
+

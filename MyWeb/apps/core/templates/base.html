@@ -21,7 +21,9 @@
 
 			<div id="main-navbar" class="navbar-menu">
 				<div class="navbar-end">
-					<a href="{% url 'contactpage' %}" class="navbar-item">Contact</a>
+					{% for category in menu_categories %}
+						<a href="{% url 'category_detail' category.slug %}" class="navbar-item">{{category.title}}</a>
+					{% endfor %}					
 				</div>
 			</div>
 		</nav>
@@ -30,5 +32,18 @@
 			{% block content %}
             {% endblock %}
 		</section>
+
+		<footer class="footer">
+			<div class="columns">				
+				<div class="column is-4">
+					<h2 class="subtitle">MyWeb</h2>
+				</div>
+
+				<div class="column is-8">
+					<a href="{% url 'contactpage' %}" class="navbar-item">Contact</a>
+					<a href="{% url 'aboutpage' %}" class="navbar-item">About</a>
+				</div>
+			</div>
+		</footer>
 	</body>
 </html> 
