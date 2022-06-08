@@ -22,7 +22,7 @@ from apps.cart.views import cart
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cart/', cart, name="cart")
+    path('cart/', cart, name="cart"),
     path('', frontpage , name='frontpage'),
     path('contact/', contactpage , name='contactpage'), #name값은 장고 템플릿 url태그에서 사용하는 값
     path('about/', aboutpage , name='aboutpage'),
