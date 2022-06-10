@@ -4,4 +4,16 @@
 
 {% block content %}
     <h1 class="title">Cart</h1>
+
+    {% if cart %}
+        {% for item in cart %}
+            {% with product=item.product %}
+                <p>Product</p>
+            {% endwith%}
+        {% endfor %}
+    {% else %}
+        <p>장바구니가 비었습니다.</p>
+    {% endif %}
+
+   
 {% endblock content %}

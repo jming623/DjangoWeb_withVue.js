@@ -30,7 +30,7 @@ urlpatterns = [
     path('about/', aboutpage , name='aboutpage'),
 
     #API
-    path('api/add_to_cart', api_add_to_cart, name='api_add_to_cart'),
+    path('api/add_to_cart/', api_add_to_cart, name='api_add_to_cart'),
 
     #Store
     path('<slug:category_slug>/<slug:slug>/', product_detail, name='product_detail'),

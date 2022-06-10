@@ -7,11 +7,8 @@ from apps.cart.cart import Cart
 from .models import Product
 
 def api_add_to_cart(request):
-    data = json.load(request.body)
-    
-    print("api.py에서 실행됨=====")
-    print("json데이터로 넘어온 data객체: "+data)
-    
+    data = json.loads(request.body)
+
     jsonresponse = {'seccess':True}
     product_id = data['product_id']
     update = data['update']
@@ -25,6 +22,5 @@ def api_add_to_cart(request):
         cart.add(product=product, quantity=1, update_quantity=False)
     else:
         cart.add(product=product, quantity=quantity, update_quantity=True)
-
-    print("api.py에서 실행됨=====")
+        
     return JsonResponse(jsonresponse)
