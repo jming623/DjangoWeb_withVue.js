@@ -3,17 +3,41 @@
 {% block title %}Cart | {% endblock %}
 
 {% block content %}
-    <h1 class="title">Cart</h1>
+    <div id="cartapp">
+        <h1 class="title">Cart</h1>
+    
+        {% if cart %}
+            {% for item in cart %}
+                {% with product=item.product %}
+                    <p>{{ product.title }}</p>
+                    <button @click="removeProduct({{ product.id }})">장바구니에서 삭제</button>
+                {% endwith%}
+            {% endfor %}
+        {% else %}
+            <p>장바구니가 비었습니다.</p>
+        {% endif %}
+    </div>
 
-    {% if cart %}
-        {% for item in cart %}
-            {% with product=item.product %}
-                <p>Product</p>
-            {% endwith%}
-        {% endfor %}
-    {% else %}
-        <p>장바구니가 비었습니다.</p>
-    {% endif %}
+{% endblock %}
 
-   
-{% endblock content %}
+{% block scripts %}
+    <script>
+        var productapp = new Vue({
+            el : '#cartapp'
+            ,delimeters: ['[[',']]']
+            ,data(){
+                return{
+
+                }
+            }
+            ,mounted(){
+                console.log("Mounted")
+            }
+            ,methods:{
+                addToCart(product_id){
+                
+                }
+            }
+        });
+    </script>
+{% endblock %}                    
