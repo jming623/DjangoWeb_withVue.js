@@ -1,4 +1,4 @@
-from django.conf import settings
+from django.conf import settings #django settings.py
 
 from apps.store.models import Product
 
@@ -24,7 +24,7 @@ class Cart(object):
             self.cart[str(p)]["product"] = Product.objects.get(pk=p)
 
         for item in self.cart.values():
-            item['total_price'] = int(item['price']) * (item['quantity'])  
+            item['total_price'] = float(item['price']) * int(item['quantity'])  
 
             yield item
 
@@ -43,7 +43,7 @@ class Cart(object):
         else:
             self.cart[product_id]['quantity'] = self.cart[product_id]['quantity'] + 1
         
-        print(type(self.cart))
+        print(self.cart)
 
         self.save()
 
